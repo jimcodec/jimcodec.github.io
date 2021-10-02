@@ -85,7 +85,7 @@ function SHA1(sIn) {
 
 </script>
 <script type="text/javascript">
-	const TOKEN = "";
+	const TOKEN = "jim2ha01986";
 	let  getQueryVariable = (variable)=>{
 		   let result = {};
 	       let vars = window.location.search.substring(1).split("&");
@@ -103,9 +103,10 @@ function SHA1(sIn) {
            let token = TOKEN;    
            let tmpArr = [token, timestamp, nonce];    
            tmpArr.sort();    
-           tmpArr = tmpArr.join("");    
+           tmpStr = tmpArr.join("");    
+           console.log(tmpStr)
            tmpStr = SHA1( tmpStr );    
-              
+              console.log(tmpStr)
           if( tmpStr == signature ){    
               return true;    
            }else{    
@@ -113,15 +114,17 @@ function SHA1(sIn) {
            }    
        };    
 
-    let parameters = getQueryVariable();
-    let nonce = parameters["nonce"];  
-    let checkSignatureResult = checkSignature(parameters);
-    alert(nonce);
-    
-    alert(checkSignatureResult);
-    if(checkSignatureResult){
-    	document.write(nonce)    	
-    }
+    window.onload = ()=>{
+	    let parameters = getQueryVariable();
+	    let nonce = parameters["nonce"];  
+	    let checkSignatureResult = checkSignature(parameters);
+	    if(checkSignatureResult){
+	    	document.write(nonce)    	
+	    }else{
+	    	document.write('fck')
+	    }
+	};
+
 
 </script>
 </html>
